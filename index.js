@@ -3,15 +3,14 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const app = express();
 
-const adminRoutes = require('./routes/admin');
+const jsonRoutes = require('./routes/jsonRoute');
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(adminRoutes);
+
+app.use(jsonRoutes);
 
 app.use('/static', express.static(path.join(__dirname, 'public')));
-
-
-
 
 app.set('views', __dirname + '/views');
 app.set('view engine', 'pug');

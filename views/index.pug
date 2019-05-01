@@ -3,12 +3,20 @@ html
             meta(charset='utf-8')
             title Document
             script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js")
+            link(rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous")
+            script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous")
+            link(rel="stylesheet" href="static/css/json.css")
         body
             div(ng-app="myApp" ng-controller="myCtrl")
-                input(type="textarea" ng-model="jsonSource")
-                button(ng-click="addItem()")
-                input(type="textarea" ng-model="jsonDestination")
+                nav(class="navbar navbar-light bg-dark")
+                h1
+                    p(style="text-align:center;")
+                        JSON JSON COMPARISON APP
+                a(class="navbar-brand" href="#")
+                textarea.screen1(rows="5" cols="30" ng-model="jsonSource")
+                button.add(type="button" ng-click="addItem()") JSON COMPARE
+                textarea.screen2(rows="5" cols="30" ng-model="jsonDestination")
                 br
                 br
-                input(type="textarea" ng-model="jsonResult")
+                textarea.screen3(rows="5" cols="30" ng-model="jsonResult")
             script(src="static/js/json.js")
