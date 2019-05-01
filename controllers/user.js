@@ -1,3 +1,4 @@
+const _ = require('lodash');
 
 exports.get = (req,res,next) => {
     res.render("index");
@@ -8,54 +9,46 @@ exports.add = (req,res,next) => {
     	var jsonSource =  req.body.jsonSource;
 		try{
 			jsonSource = JSON.parse(jsonSource)
-		}catch(err){
-
-		}
+		}catch(err){}
 		var jsonDestination = req.body.jsonDestination;
 		try{
 			jsonDestination = JSON.parse(jsonDestination)
 		}catch(err){
-
 		}
-
 	
 	var keyObj1 = Object.keys(jsonSource);
 	var keyObj2 = Object.keys(jsonDestination);
 
-	console.log(keyObj1);
-	console.log(keyObj2);
+	var result = _.difference(keyObj1,keyObj2);
 
-	var valueObj1 = Object.values(jsonSource);
-	var valueObj2 = Object.values(jsonDestination);
-
-	
-	if(keyObj1.length > keyObj2.length) { 
-		var biggestKey = keyObj1.length;
-		console.log('biggestKey1',biggestKey)
-	} else {
-		var biggestKey = keyObj2.length;
-		console.log('biggestKey2',biggestKey)
+	var	users = [];
+	var users1 = [];
+	var users2;
+		
+		_.forEach([result],function(keyObj1,keyObj2){
+		if(jsonSource != 0){
+		users.push(jsonSource);
+		users2 = users;
 	}
+})
 
-	for(var i=0; i<biggestKey; i++) {
-		if(keyObj1[i] == keyObj2[i] && valueObj1[i] == valueObj2[i]) {
-			res.send(valueObj2[i]);	
-		} 
-		else if(keyObj1[i] != keyObj2[i]) {
-			res.send(keyObj1[i]);
-			console.log(valueObj1[i]);
-		}
-		else {
-			res.send(keyObj2[i]);
-			console.log(valueObj2[i]);
-		}
-	}	
+	var mapFunction = _.map(result,keyFunction => {
+
+	users1.push(_.map(users2,arrFunction => {
+   		object = {}
+   		[keyFunction] = arrFunction[keyFunction] 
+	 	return object
+   })
+   )
+   		return users1
+ })
+
+ 	var finalJson = JSON.stringify(mapFunction)
+ 	res.send(finalJson);
+ 	console.log(finalJson);
 
 }
 
-function json(sourceObj,destinationObj){
-	var arr1=[];
-	for(int i=0;keyObj1.length>0;i++){
 
-	}
-}
+
+
